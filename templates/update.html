@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Ship Shop Manager</title>
+{% endblock %}
+
+{% block body %}
+<div class="content">
+    <h1 style="text-align: center">Update Ship</h1>
+
+    <form action="/update/{{ship.id}}" method="POST">
+        <br><br><br>
+        <h3 style="text-align: center">Add Ship</h3>
+        <h5 style="text-align: center">Name</h5>
+        <input type="text" name="name" id="name">
+        <h5 style="text-align: center">Tonnage</h5>
+        <input type="text" name="tonnage" id="name">
+        <h5 style="text-align: center">Max Speed</h5>
+        <input type="text" name="max_speed" id="name">
+        <h5 style="text-align: center">Fuel consumption per 100 miles</h5>
+        <input type="text" name="fuel_per_100miles" id="name">
+        <h5 style="text-align: center">Movement Surfaces</h5>
+        <input type="text" name="movement_surface" id="name">
+        <h5 style="text-align: center"> MovementType</h5>
+        <input type="text" name="movement_type" id="name" >
+        <br><br>
+        <input type="submit" value="Update Ship">
+    </form>
+</div>
+{% endblock %}
