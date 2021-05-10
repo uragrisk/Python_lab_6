@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Ship Shop Manager</title>
+{% endblock %}
+
+{% block body %}
+<div class="content">
+    <h1 style="text-align: center">Ship</h1>
+    <h1 style="text-align: center">Shop Manager</h1>
+    {% if ships|length < 1 %}
+    <h4 style="text-align: center">There are no ships. Create one below!</h4>
+    {% else %}
+        <table>
+        <tr>
+            <th>Name</th>
+            <th>Tonnage</th>
+            <th>Max Speed</th>
+            <th>Fuel consumption per 100 miles</th>
+            <th>Movement Surface</th>
+            <th>MovementType</th>
+            <th>Added</th>
+            <th>Actions</th>
+        </tr>
+        {% for ship in ships %}
+            <tr>
+                <th>{{ ship.name }}</th>
+                <th>{{ ship.tonnage }}</th>
+                <th>{{ ship.max_speed }}</th>
+                <th>{{ ship.fuel_per_100miles }}</th>
+                <th>{{ ship.movement_surface }}</th>
+                <th>{{ ship.movement_type }}</th>
+                <th>{{ ship.date_created.date() }}</th>
+                <th>
+                    <a href="/delete/{{ship.id}}">Delete</a>
+                    <br>
+                    <a href="/update/{{ship.id}}">Update</a>
+                    <br>
+                </th>
+            </tr>
+        {% endfor %}
+    </table>
+    {% endif %}
+
+
+
+
+
+
+    <form action="/" method="POST">
+        <br><br><br>
+        <h3 style="text-align: center">Add Ship</h3>
+        <h5 style="text-align: center">Name</h5>
+        <input type="text" name="name" id="name">
+        <h5 style="text-align: center">Tonnage</h5>
+        <input type="text" name="tonnage" id="name">
+        <h5 style="text-align: center">Max Speed</h5>
+        <input type="text" name="max_speed" id="name">
+        <h5 style="text-align: center">Fuel consumption per 100 miles</h5>
+        <input type="text" name="fuel_per_100miles" id="name">
+        <h5 style="text-align: center">Movement Surfaces</h5>
+        <input type="text" name="movement_surface" id="name">
+        <h5 style="text-align: center"> MovementType</h5>
+        <input type="text" name="movement_type" id="name">
+        <br><br>
+        <input type="submit" value="Add Ship">
+    </form>
+</div>
+{% endblock %}
